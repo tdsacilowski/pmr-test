@@ -8,5 +8,5 @@ module "ec2" {
   instance_type = "t2.micro"
   name = "pmr-test-ec2"
   subnet_id = "subnet-1cf66233"
-  vpc_security_group_ids = "sg-5067c224"
+  vpc_security_group_ids = ["sg-5067c224"]
 }
