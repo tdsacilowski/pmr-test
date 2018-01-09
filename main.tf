@@ -1,10 +1,12 @@
 //--------------------------------------------------------------------
 // Modules
-module "vpc" {
-  source  = "teddy-ptfe.hashidemos.io/teddy-ptfe-demo/vpc/aws"
-  version = "1.2.0"
+module "ec2" {
+  source  = "teddy-ptfe.hashidemos.io/teddy-ptfe-demo/ec2/aws"
+  version = "1.1.0"
 
-  cidr = "10.11.0.0/16"
-  create_database_subnet_group = "false"
-  name = "teddy-pmr-test"
+  ami = "ami-aa2ea6d0"
+  instance_type = "t2.micro"
+  name = "pmr-test-ec2"
+  subnet_id = "subnet-1cf66233"
+  vpc_security_group_ids = "sg-5067c224"
 }
