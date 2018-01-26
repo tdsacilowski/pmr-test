@@ -13,7 +13,7 @@ module "rds" {
   backup_window = "03:00-06:00"
   engine = "mysql"
   engine_version = "5.7.19"
-  identifier = "rds-mysql"
+  identifier = "demodb"
   instance_class = "db.t2.large"
   maintenance_window = "Mon:00:00-Mon:03:00"
   name = "testdb"
