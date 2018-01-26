@@ -1,12 +1,23 @@
 //--------------------------------------------------------------------
-// Modules
-module "ec2" {
-  source  = "teddy-ptfe.hashidemos.io/teddyptfedemo/ec2/aws"
-  version = "1.1.0"
+// Variables
+variable "rds_password" {}
+variable "rds_username" {}
 
-  ami = "ami-aa2ea6d0"
-  instance_type = "t2.micro"
-  name = "pmr-test-ec2"
-  subnet_id = "subnet-1cf66233"
-  vpc_security_group_ids = ["sg-5067c224"]
+//--------------------------------------------------------------------
+// Modules
+module "rds" {
+  source  = "teddy-ptfe.hashidemos.io/teddy-ptfe-demo/rds/aws"
+  version = "1.6.0"
+
+  allocated_storage = 5
+  backup_window = "03:00-06:00"
+  engine = "mysql"
+  engine_version = "5.7.19"
+  identifier = "rds-mysql"
+  instance_class = "db.t2.large"
+  maintenance_window = "Mon:00:00-Mon:03:00"
+  name = "testdb"
+  password = "${var.rds_password}"
+  port = 3306
+  username = "${var.rds_username}"
 }
